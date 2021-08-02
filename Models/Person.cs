@@ -6,13 +6,13 @@ namespace UdemyManageAPI.Models
     public class Person
     {
         [Key]
-        public int person_id { get; set; }
+        public int Person_id { get; set; }
 
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public int age { get; set; }
+        public int Age { get; set; }
 
-        public string date_init { get; set; }
+        public string Date_init { get; set; }
 
     }
 }

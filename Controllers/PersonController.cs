@@ -22,7 +22,7 @@ namespace UdemyManageAPI.Controllers
         {
             try
             {
-                var result = context.persons.ToList();
+                var result = context.persons.ToArray();
                 return Ok(result);
             }
             catch(Exception e)
@@ -36,7 +36,7 @@ namespace UdemyManageAPI.Controllers
         {
             try
             {
-                var result = context.persons.FirstOrDefault(p => p.person_id == id);
+                var result = context.persons.FirstOrDefault(p => p.Person_id == id);
                 return Ok(result);
             }
             catch(Exception e)
@@ -52,7 +52,7 @@ namespace UdemyManageAPI.Controllers
             {
                 context.persons.Add(person);
                 context.SaveChanges();
-                return CreatedAtRoute("GetPerson", new { id = person.person_id }, person);
+                return CreatedAtRoute("GetPerson", new { id = person.Person_id }, person);
             }
             catch(Exception e)
             {
@@ -65,11 +65,11 @@ namespace UdemyManageAPI.Controllers
         {
             try
             {
-                if (person.person_id == id)
+                if (person.Person_id == id)
                 {
                     context.Entry(person).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetPerson", person);
+                    return CreatedAtRoute("GetPerson", new { id = person.Person_id }, person);
                 }
                 else
                 {
@@ -87,8 +87,8 @@ namespace UdemyManageAPI.Controllers
         {
             try
             {
-                var showAll = context.persons.ToList();
-                var result = context.persons.FirstOrDefault(p => p.person_id == id);
+                var showAll = context.persons.ToArray();
+                var result = context.persons.FirstOrDefault(p => p.Person_id == id);
                 if (result != null)
                 {
                     context.persons.Remove(result);
